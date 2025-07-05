@@ -25,6 +25,7 @@ let tasksList = [];
 
 app.get('/getTasks', async (req, res) => {
     const tasks = await tasksCollection.find().toArray();
+    tasks.sort((a, b) => a.isDone - b.isDone);
     res.send(tasks)
 })
 
